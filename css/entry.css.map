@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,+BAA+B;EAE9B,gBAAgB,EAAE,IAAI;EACtB,MAAM,EAAE,qBAAqB;EAC7B,aAAa,EAAE,GAAG;EAClB,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,MAAM;EACjB,WAAW,EAAE,MAAM;EACnB,MAAM,EAPC,IAAI;EAQX,MAAM,EAAE,UAAU;EAClB,KAAK,EATE,IAAI;EAUX,qCAAO;IACN,gBAAgB,ECVD,IAAI",
+"sources": ["src/entry.sass","src/includes/_colors.sass"],
+"names": [],
+"file": "entry.css"
+}

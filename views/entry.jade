@@ -1,0 +1,54 @@
+extends ./layouts/_page
+block content
+	h2.form-header!= title
+	p!= desc
+	hr
+	form.form-inline.col-md-6(action="js/form_handler.js" id="entry")
+		.row
+			h4.section-title: span.inner Input
+			each field in entry_form.fields
+				.row.pad-10
+					.col-md-2
+					.col-md-8.form-group
+						span(class=`${field.ig ? "input-group" : "not-ig"} ${field.indent ? "indent" : ""}`)
+							label(for=`${field.name}` class=`${field.label.iga ? "input-group-addon" : ""}`)!= field.label.text
+							#{field.input.el ? field.input.el : "input"}.form-control(name=`${field.name}` type=`${field.input.type ? field.input.type : ""}` class=`${field.input.class ? field.input.class : ""}` data-bind=`${field.name}`)
+								if field.input.children
+									each child_text in field.input.children.text.sort()
+										#{field.input.children.el}(value=`${child_text.toLowerCase()}`) #{child_text}
+							if field.labelEnd
+								#{field.labelEnd.el}(class=`${field.labelEnd.class ? field.labelEnd.class : "input-group-addon"}`) #{field.labelEnd.text}
+									if field.labelEnd.children
+										each child_text in field.labelEnd.children.text
+											#{field.labelEnd.children.el} #{child_text}
+					.col-md-2
+		section.state.bike.row.display-none
+			h4.section-title: span.inner Bike Workout
+			.row.pad-10
+				.col-md-2
+				.col-md-8.form-group
+					span.input-group
+						label.input-group-addon(for="bike-distance") Distance:
+						input.form-control(name="bike-distance" type="number" data-bind="bike-distance")
+				.col-md-2
+			.row.pad-10
+				.col-md-2
+				.col-md-8.form-group
+					span.input-group
+						label.input-group-addon(for="bike-time") Duration:
+						input.form-control(name="bike-time" type="number" data-bind="bike-duration")
+				.col-md-2
+	section.col-md-4#preview.no-mobileLarge
+		h4.section-title: span.inner Preview
+		each field in entry_form.fields
+			.row
+				.col-md-10.form-group.center-block
+					span.input-group
+						label.input-group-addon(for=`${field.name}`)!= field.label.text
+						input.form-control(name=`${field.name}` type=`text` data-bind=`${field.name}` disabled style="width: 100%")
+						if field.labelEnd
+								#{field.labelEnd.el}(class=`${field.labelEnd.class ? field.labelEnd.class : "input-group-addon"}`) #{field.labelEnd.text}
+									if field.labelEnd.children
+										each child_text in field.labelEnd.children.text
+											#{field.labelEnd.children.el} #{child_text}
+							

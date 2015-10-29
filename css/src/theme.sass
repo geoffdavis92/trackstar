@@ -1,0 +1,60 @@
+// THEME
+
+@import 'includes/colors'
+@import 'includes/type'
+
+//=> Utilities
+$disp : ('block','inline-block','inline','none')
+@each $d in $disp
+	.display-#{$d}
+		display: #{$d} !important
+$padding : (5,10,25,50)
+@each $num in $padding
+	.pad-#{$num}
+		padding: #{$num}px
+$breakpoints: (480px,640px,768px,1024px,1224px,1824px)
+$breakpoint_desc: ('mobile','mobileLarge','tabStart','tabEnd','desktop','desktopLarge')
+
+@each $bp in $breakpoints
+	$index: index($breakpoints, $bp)
+	.only-#{nth($breakpoint_desc,$index)}
+		@media only screen and (min-width: nth($breakpoints,$index))
+			content: quote("Only " + nth($breakpoint_desc,$index))
+			display: none !important 
+	.no-#{nth($breakpoint_desc,$index)}
+		@media only screen and (max-width: nth($breakpoints,$index))
+			content: quote("No " + nth($breakpoint_desc,$index))
+			display: none !important   
+
+//=> Layout
+header
+	margin: 25px 50px
+form
+	&.form-inline
+		&#entry
+		span.input-group
+			width: 100%
+		span.not-ig
+			label
+				color: $bs-gray-label
+				margin-right: 10px
+			select
+				width: 63%
+		span.indent
+			margin-left: 10%
+			select
+				width: 45%
+		section.state
+			padding-top: 10px
+			h4.section-title
+				margin-bottom: 10px
+#preview
+	input[disabled]
+		text-align: right
+		text-transform: capitalize
+h4.section-title
+	margin: auto auto 25px
+	text-align: center
+	span.inner
+		border-bottom: 1px solid $gray-light
+		padding: 0 10px 5px

@@ -1,0 +1,6 @@
+- var fscripts = ['main']
+footer
+	each fjs in fscripts
+		script(src=`js/${fjs}.js`)
+	if script
+		script(src=`dev/js/${title.toLowerCase()}.js`)

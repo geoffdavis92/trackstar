@@ -1,0 +1,7 @@
+{
+	"page": {
+		"title": "About",
+		"route": "/about",
+		"desc": "About Moneybox"
+	}
+}

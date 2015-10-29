@@ -1,0 +1,8 @@
+{
+	navigation: [
+		{
+			name: 'about',
+			route: '/about'
+		}
+	]
+}

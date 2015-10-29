@@ -1,0 +1,10 @@
+extends ./layouts/_page
+block content
+	h2.form-header!= title
+	p!= desc
+	hr
+	ul.list.list-inline.list-unstyled
+		- var data_docs = ['page.about','page.data','page.index','site']
+		- data_docs.sort()
+		each doc in data_docs
+			a(href="#{doc}.json"): li #{doc}.json

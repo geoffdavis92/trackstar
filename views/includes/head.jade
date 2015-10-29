@@ -1,0 +1,11 @@
+doctype html
+head
+	meta(name="author" content="Geoff Davis <geoffdavis92@gmail.com>")
+	title Express App
+	- var scripts = ['node_modules/jquery/dist/jquery.js','node_modules/bootstrap/dist/js/bootstrap.js','js/init.js']
+	- var styles = ['node_modules/bootstrap/dist/css/bootstrap.css','css/theme.css']
+	each spt in scripts
+		script(src="#{spt}")
+	each sty in styles
+		link(href="#{sty}" rel="stylesheet" type="text/css")
+	link(href="css/#{title.toLowerCase()}.css" rel="stylesheet" type="text/css")

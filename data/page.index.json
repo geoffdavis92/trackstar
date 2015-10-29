@@ -1,0 +1,7 @@
+{
+	page: {
+		title: "Home",
+		route: "/home",
+		desc: "Home page"
+	}
+}

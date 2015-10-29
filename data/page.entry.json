@@ -1,0 +1,29 @@
+{
+	"page": {
+		"title": "Entry",
+		"route": "/entry",
+		"desc": "Enter workouts into your records",
+		"entry_form": {
+			"fields": [
+				{
+					"name": "date",
+					"label": {
+						"text": "Date:"
+					},
+					"input": {
+						"type": "date"
+					}
+				},
+				{
+					"name": "duration",
+					"label": {
+						"text": "Duration:"
+					},
+					"input": {
+						"type": "number"
+					}
+				}
+			]
+		}
+	}
+}

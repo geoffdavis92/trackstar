@@ -1,0 +1,23 @@
+2015-10-28T10:50:53.828907000 0.011185s notice: Recursively removing directory /Users/geoffreydavis/Google Drive/AM-Computer/Documents/github/node/server/rethinkdb_data/tmp
+2015-10-28T10:50:53.830472000 0.012753s notice: Initializing directory /Users/geoffreydavis/Google Drive/AM-Computer/Documents/github/node/server/rethinkdb_data
+2015-10-28T10:50:53.830565000 0.012843s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/geoffreydavis/Google Drive/AM-Computer/Documents/github/node/server/rethinkdb_data' did not already exist or is empty.)
+2015-10-28T10:50:53.831214000 0.013492s notice: Running rethinkdb 2.1.4 (CLANG 7.0.0 (clang-700.0.72))...
+2015-10-28T10:50:53.836058000 0.018337s notice: Running on Darwin 14.5.0 x86_64
+2015-10-28T10:50:53.836101000 0.018379s notice: Loading data from directory /Users/geoffreydavis/Google Drive/AM-Computer/Documents/github/node/server/rethinkdb_data
+2015-10-28T10:50:53.938430000 0.120707s info: Automatically using cache size of 218 MB
+2015-10-28T10:50:53.939068000 0.121345s notice: Listening for intracluster connections on port 29015
+2015-10-28T10:50:53.943351000 0.125628s notice: Listening for client driver connections on port 28015
+2015-10-28T10:50:53.943506000 0.125783s notice: Listening for administrative HTTP connections on port 8080
+2015-10-28T10:50:53.943511000 0.125789s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-28T10:50:53.943512000 0.125790s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-28T10:50:53.943516000 0.125793s notice: Server ready, "Geoffreys_MacBook_Pro_local_yl8" 83585174-4c53-4a6b-ba52-4db3cff6ce42
+2015-10-28T10:50:54.299853000 0.482131s notice: A newer version of the RethinkDB server is available: 2.1.5-2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-10-28T11:13:24.473449000 1350.613070s info: Table 9839c463-f50c-4c6c-9503-d135bc445952: Added replica on this server.
+2015-10-28T11:13:26.417778000 1352.557338s info: Table 9839c463-f50c-4c6c-9503-d135bc445952: Starting a new Raft election for term 1.
+2015-10-28T11:13:26.442817000 1352.582378s info: Table 9839c463-f50c-4c6c-9503-d135bc445952: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-28T12:55:47.313133000 7493.261096s info: Table 15bfbf11-689b-4a73-aaed-4e6ae43a728b: Added replica on this server.
+2015-10-28T12:55:49.038083000 7494.985986s info: Table 15bfbf11-689b-4a73-aaed-4e6ae43a728b: Starting a new Raft election for term 1.
+2015-10-28T12:55:49.060467000 7495.008370s info: Table 15bfbf11-689b-4a73-aaed-4e6ae43a728b: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-28T13:42:47.171860000 10313.032961s info: Table 1c0665c8-7627-4ee0-b303-4436cb867e0d: Added replica on this server.
+2015-10-28T13:42:48.819254000 10314.680296s info: Table 1c0665c8-7627-4ee0-b303-4436cb867e0d: Starting a new Raft election for term 1.
+2015-10-28T13:42:48.838815000 10314.699856s info: Table 1c0665c8-7627-4ee0-b303-4436cb867e0d: This server is Raft leader for term 1. Latest log index is 0.
