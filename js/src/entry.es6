@@ -37,4 +37,4 @@ $(new_record_button_html).on('click', function (e) { e.preventDefault() })
 
 console.log(u.convert().info)
 console.log(u.convert('12 in').toFeet())
-console.log(u.convert('24 in'))
+console.log(u.convert('24 in').toFeet({strict: true}))

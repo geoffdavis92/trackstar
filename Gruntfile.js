@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 				}
 			},
 			js: {
-				files: 'js/src/*.es6',
+				files: ['js/src/*.es6','js/utilities/src/*.es6'],
 				tasks: ['babel','webpack:dev']
 			},
 			css: {
@@ -36,9 +36,9 @@ module.exports = function(grunt) {
 			dev_utilities: {
 				files: [{
 					expand: true,
-					cwd: './js/utilities/src',
-					src: ['*.es6'],
-					dest: './js/utilities',
+					cwd: 'js/utilities/src',
+					src: ['index.es6'],
+					dest: 'js/utilities',
 					ext: '.util.js'
 				}]
 			},
@@ -62,11 +62,37 @@ module.exports = function(grunt) {
 				watch: false
 			}
 		},
-		sass: {}
+		sass: {
+			source: {
+				options: {
+					style: 'compressed'
+				},
+				files: [{
+					expand: true,
+					cwd: './css/src',
+					src: ['*.sass'],
+					dest: './css',
+					ext: '.css'
+				}]
+			},
+			dev: {
+				options: {
+					style: 'expanded'
+				},
+				files: [{
+					expand: true,
+					cwd: './css/src',
+					src: ['*.sass'],
+					dest: './dev/css',
+					ext: '.css'
+				}]
+			}
+		}
 	})
 	grunt.loadNpmTasks('grunt-contrib-watch')
 	grunt.loadNpmTasks('grunt-babel')
 	grunt.loadNpmTasks('grunt-webpack')
 	grunt.loadNpmTasks('grunt-contrib-sass')
 	grunt.registerTask('default',['watch','babel','webpack','sass'])
+	//grunt.registerTask('watch', ['watch'])
 }

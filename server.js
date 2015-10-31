@@ -4,16 +4,20 @@
 // Modules
 
 	// Core modules
-	var fs = require('fs')
-	var util = require('util')
+	const fs = require('fs')
+	const util = require('util')
 
 	// Vendor modules
-	var express = require('express')
-	var r = require('rethinkdb')
-	var db = require('./db.js')
+	const express = require('express')
+	const r = require('rethinkdb')
+	const chalk = require('chalk')
+	const db = require('./db.js')
 
 // SETUP
-	var app = express()
+	const access = chalk.bold.green
+	const info = chalk.cyan
+	const err = chalk.bold.red
+	const app = express()
 
 	app.set('env','development')
 	app.set('views','./views')
@@ -131,13 +135,13 @@
 
 // START SERVER
 	app.listen(app.locals.port)
-	console.info('App listening on port %s', app.locals.port)
+	console.log(access('App listening on port'), info(app.locals.port))
 
 // ROUTING
 	app.get(['/','/index','/index.html','/home'], (req,res) => {
 		var date = new Date()
-		var dateStr = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} on ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
-		console.log('Access "%s" | %s',req.path, dateStr)
+		var dateStr = `@ ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} on ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+		console.log(access(`Access ${req.path} | `), info(dateStr))
 		if (Object.keys(req.query).length !== 0) {
 			var str = ""
 			var getStr = function () {
@@ -146,15 +150,15 @@
 				}
 				return str
 			}
-			console.log(`Query: ${getStr()}`)
+			console.log(info(`Query: ${getStr()}`))
 		}
 		res.render('index', app.locals.pageData["home"])
 	})
 
 	app.get(['/data','/data/index','/data/index.html'], (req,res) => {
 		var date = new Date()
-		var dateStr = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} on ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
-		console.log('Access "%s" | %s',req.path, dateStr)
+		var dateStr = `@ ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} on ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+		console.log(access(`Access ${req.path} | `), info(dateStr))
 		if (Object.keys(req.query).length !== 0) {
 			var str = ""
 			var getStr = function () {
@@ -163,7 +167,7 @@
 				}
 				return str
 			}
-			console.log(`Query: ${getStr()}`)
+			console.log(info(`Query: ${getStr()}`))
 		}
 		res.render('data', {page: 'data/page.data.json'})
 	})
@@ -174,8 +178,8 @@
 	for (let i in pages) {
 		app.get([`/${pages[i]}`,`/${pages[i]}/`,`/${pages[i]}.html`], (req,res) => {
 				var date = new Date()
-				var dateStr = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} on ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
-				console.log('Access "%s" | %s',req.path, dateStr)
+				var dateStr = `@ ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} on ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+				console.log(access(`Access ${req.path} | `), info(dateStr))
 				if (Object.keys(req.query).length !== 0) {
 					var str = ""
 					var getStr = function () {
@@ -184,12 +188,12 @@
 						}
 						return str
 					}
-					console.log(`Query: ${getStr()}`)
+					console.log(info(`Query: ${getStr()}`))
 				}
 			res.render(`${pages[i]}`, app.locals.pageData[pages[i]])
 		})
 	}
 
 	app.get('/js/form_handler.js', (req,res) => {
-		console.log(req)
+		console.log(info(req))
 	})

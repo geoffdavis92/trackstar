@@ -46,4 +46,5 @@ $(new_record_button_html).on('click', function (e) {
 
 console.log(_utilitiesIndexUtilJs2['default'].convert().info);
 console.log(_utilitiesIndexUtilJs2['default'].convert('12 in').toFeet());
+console.log(_utilitiesIndexUtilJs2['default'].convert('24 in').toFeet({ strict: true }));
 //# sourceMappingURL=entry.js.map

@@ -1,17 +1,18 @@
 // Utilities Index
 
+'use strict';
+
 /**
  * All values are multipliers; given that
  * 1 [parent name unit] === 1 [property name unit]
  */
-
-'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 var Conversion = (function () {
+
 	/**
   * [constructor description]
   * @param  {string} input Containers numeric value and 
@@ -28,7 +29,19 @@ var Conversion = (function () {
 		})(i);
 		this.num = i ? parseFloat(i.split(' ')[0]) : undefined;
 		this.unit = i ? i.split(' ')[1] : undefined;
+		this.options = {
+			strict: false,
+			output: 'number'
+		};
 		this.table = {
+			temp: {
+				abbr: {
+					degC: 'celsius',
+					degF: 'fahrenheit'
+				},
+				celsius: {},
+				fahrenheit: {}
+			},
 			distance: {
 				abbr: {
 					cm: 'centimeters',
@@ -64,38 +77,116 @@ var Conversion = (function () {
 	_createClass(Conversion, [{
 		key: 'toFeet',
 		value: function toFeet() {
-			var num = arguments.length <= 0 || arguments[0] === undefined ? this.num : arguments[0];
-			var unit = arguments.length <= 1 || arguments[1] === undefined ? this.unit : arguments[1];
-			var options = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+			var options = arguments.length <= 0 || arguments[0] === undefined ? this.options : arguments[0];
 
 			var table = this.table.distance['' + this.table.distance.abbr['' + this.unit]];
 			var product;
-			switch (unit) {
+			switch (this.unit) {
 				case 'in':
-					product = num * table.toFeet;
+					product = this.num * table.toFeet;
 					break;
 			}
 			product = options.strict ? product : Math.round(product);
 			return product;
-		}
-	}, {
-		key: 'echo',
-		value: function echo() {
-			console.log({
-				number: this.num,
-				unit: this.unit
-			});
 		}
 	}]);
 
 	return Conversion;
 })();
 
+var TypeCheck = (function () {
+	function TypeCheck(v, t) {
+		_classCallCheck(this, TypeCheck);
+
+		this._var = v;
+		this._type = t;
+	}
+
+	_createClass(TypeCheck, [{
+		key: 'type',
+		value: function type(_var) {
+			_var = _var || this._var;
+			return typeof _var;
+		}
+	}, {
+		key: 'isExpected',
+		value: function isExpected(_var, _type) {
+			_var = _var || this._var;
+			_type = _type || this._type;
+			return typeof _var === _type ? true : false;
+		}
+	}, {
+		key: 'isString',
+		value: function isString(_var) {
+			_var = _var || this._var;
+			return typeof _var === 'string' ? true : false;
+		}
+	}, {
+		key: 'isNum',
+		value: function isNum(_var) {
+			_var = _var || this._var;
+			if (typeof parseInt(_var) === 'number' && isNaN(_var) === false) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}, {
+		key: 'isInt',
+		value: function isInt(_var) {
+			_var = _var || this._var;
+			if (_var.toString().indexOf('.') !== -1 || typeof _var !== 'number') {
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}, {
+		key: 'isFloat',
+		value: function isFloat(_var) {
+			_var = _var || this._var;
+			if (_var.toString().indexOf('.') !== -1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}, {
+		key: 'isArray',
+		value: function isArray(_var) {
+			_var = _var || this._var;
+			return _var.length >= 0 ? true : false;
+		}
+	}, {
+		key: 'isObject',
+		value: function isObject(_var) {
+			_var = _var || this._var;
+			if (typeof _var === "object" && _var.length === undefined) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}, {
+		key: 'isFunction',
+		value: function isFunction(_var) {
+			_var = _var || this._var;
+			return typeof _var === 'function' ? true : false;
+		}
+	}]);
+
+	return TypeCheck;
+})();
+
 var convert = function convert(i) {
 	return new Conversion(i);
 };
+var check = function check(v, t) {
+	return new TypeCheck(v, t);
+};
 
 module.exports = {
-	convert: convert
+	convert: convert,
+	check: check
 };
 //# sourceMappingURL=index.util.js.map

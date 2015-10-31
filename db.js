@@ -1,73 +1,14 @@
 'use strict';
 
-var r = require('rethinkdb')
+const convert = require('./js/utilities/index.util.js').convert
+const check = require('./js/utilities/index.util.js').check
+
+const r = require('rethinkdb')
 
 const CONNECTION = {
     host: 'localhost',
     port: 28015
 }
-
-class TypeCheck {
-	constructor(v,t) {
-		this._var = v
-		this._type = t
-	}
-	type(_var) {
-		_var = _var || this._var
-		return typeof _var
-	}
-	isExpected(_var, _type) {
-		_var = _var || this._var
-		_type = _type || this._type
-		return typeof _var === _type ? true : false
-	}
-	isString(_var) {
-		_var = _var || this._var
-		return typeof _var === 'string' ? true : false
-	}
-	isNum(_var) {
-		_var = _var || this._var
-		if (typeof parseInt(_var) === 'number' && isNaN(_var) === false) {
-			return true
-		} else {
-			return false
-		}
-	}
-	isInt(_var) {
-		_var = _var || this._var
-		if (_var.toString().indexOf('.') !== -1 || typeof _var !== 'number') {
-			return false
-		} else {
-			return true
-		}
-	}
-	isFloat(_var) {
-		_var = _var || this._var
-		if (_var.toString().indexOf('.') !== -1) {
-			return true
-		} else {
-			return false
-		}
-	}
-	isArray(_var) {
-		_var = _var || this._var
-		return _var.length >= 0 ? true : false
-	}
-	isObject(_var) {
-		_var = _var || this._var
-		if (typeof _var === "object" &&  _var.length === undefined) {
-			return true
-		} else {
-			return false
-		}
-	}
-	isFunction(_var) {
-		_var = _var || this._var
-		return typeof _var === 'function' ? true : false
-	}
-}
-
-var check = (v,t) => new TypeCheck(v,t)
 
 var test = {
 	num: 5,
@@ -142,7 +83,6 @@ var insert = function(db_name,table_name,doc,viewResponse) {
 
 module.exports = {
   CONNECTION: CONNECTION,
-  check: check,
   connect: connect,
   create: createDB,
   addTable: addTable,
