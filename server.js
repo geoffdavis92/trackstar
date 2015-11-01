@@ -5,7 +5,6 @@
 
 	// Core modules
 	const fs = require('fs')
-	const util = require('util')
 
 	// Vendor modules
 	const express = require('express')
@@ -97,7 +96,7 @@
 						},
 						"input": {
 							"el": "select",
-							"class": "form-control button-after",
+							"class": "form-control button-after form_type_setter",
 							"children": {
 								"el": "option",
 								"text": [
